@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from 'vue';
-
+import Button from 'primevue/button'
+import Card from 'primevue/card'
 let bread = ref(0);
 let eggs = ref(0);
 let milk = ref(0);
@@ -30,9 +31,18 @@ function milkDecrease(){
     milk.value--
     console.log(milk.value)
 }
+
+const images = ["img/Car1.jpg", "img/Car2.jpg", "img/Car3.jpg",]
 </script>
 
 <template>
+<Card v-for ="image in images" :key="image">
+<template #title>Cars</template>
+<template #content>
+<img alt="Cars" :src="image">
+</template>
+</Card>
+
 Bread <button @click="breadIncrease">+</button>/<button @click="breadDecrease">-</button>
 {{ bread }}
 <div>
